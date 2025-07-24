@@ -7,7 +7,9 @@ assignees: ''
 
 ---
 
-As a [USER] I want to [FUNCTION] so that [BENIFIT].
+As a [USER]
+I want to [FUNCTION]
+so that [BENIFIT]
 
 ### Acceptance Criteria
 
@@ -18,6 +20,6 @@ As a [USER] I want to [FUNCTION] so that [BENIFIT].
 
 ###Tasks
 
-- []
-- []
-- []
+-[ ]
+-[ ]
+-[ ]
