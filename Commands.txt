@@ -11,6 +11,7 @@ pip install -r requirements.txt
 pip freeze local > requirements.txt 
 
 
+
 -- run server
 python manage.py runserver
 
@@ -22,14 +23,25 @@ django-admin startproject {PROJECT_NAME} {DIRECTORY NAME}
 -- create app 
 python manage.py startapp {APP NAME}
 
+-- Create superuser
+python manage.py createsuperuser
+
+-- dry run Make migations (dry run first to make sure there are no issies)
+python manage.py makemigrations {APP NAME} --dry-run
 
 -- Make migrations (generates new migration files)
 python manage.py makemigrations
 
--- Apply migrations (applies migration files to database)
+-- Make migations for a single app
+python manage.py makemigrations {APP NAME}
+
+-- Apply all migrations (applies migration files to database)
 python manage.py migrate
 
--- unapply all migrations for app
+-- Apply migration for a single app
+python manage.py migrate {APP NAME}
+
+-- unapply all migrations for an app
 python manage.py migrate {APP NAME} zero
 
 
@@ -37,6 +49,8 @@ python manage.py migrate {APP NAME} zero
 python manage.py test
 
 
--- sets DEBUG to False automatically
-sed -i 's/^DEBUG = True/DEBUG = False/' codestar/settings.py
+-- sets DEBUG to False automatically and git add .
+sed -i 's/^DEBUG = .*/DEBUG = False/' PCGF2/settings.py
 git add .
+
+
