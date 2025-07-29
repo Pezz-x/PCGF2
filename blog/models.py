@@ -1,12 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="blog_posts")
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     body = models.TextField()
-    # images = TODO
+    images = CloudinaryField('images', blank=True, null=True)
     time_created = models.DateTimeField(auto_now=True)
     # likes = models.Count() TO RESEARCH
 
@@ -20,7 +21,7 @@ class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="commenter")
     body = models.TextField()
-    # images = TODO
+    images = CloudinaryField('images', blank=True, null=True)
     created_on = models.DateTimeField(auto_now=True)
     # likes = models.Count() TO RESEARCH
 
