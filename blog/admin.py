@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Comment
 #from django_summernote.admin import SummernoteModelAdmin
 
 # Register your models here.
@@ -12,3 +12,5 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ('author', 'time_created')
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('body',)
+
+admin.site.register(Comment)
