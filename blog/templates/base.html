@@ -9,7 +9,30 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello World from base.html</h1>
+    <!-- Navigation bar -->
+     <header>
+        <div>
+            <img src="" alt="Site icon">
+            <span>Turnpenny-Fry Syndrone (PCGF2)</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="">About</a></li>
+                <li><a href="">Forum</a></li>
+                <li><a href="https://www.facebook.com/groups/600061436853671" target="_blank" rel="noopener" aria-label="Facebook Group">FB Group</a></li>
+                <li><a href="">Profile</a></li>
+            </ul>
+        </nav>
+     </header>
+
+    <!-- Page Content -->
+    <main>
     {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; {{ year }} Turnpenny-Fry Syndrone (PCGF2). All rights reserved.</p>
+    </footer>
 </body>
 </html>

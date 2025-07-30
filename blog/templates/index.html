@@ -1,5 +1,45 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-<h1>Hello world from index.html</h1>
+
+<!-- Hero Section -->
+<section>
+    <div>
+        <h1>The Unique Turnpenny-Fry Syndrone (PCGF2)</h1>
+        <p>One in a 537 million</p>
+    </div>
+</section>
+
+<!-- About link section -->
+<section>
+    <div>
+        <h3>Learn about Turnpenny-Fry Syndrone</h3>
+        <button onclick="window.location.href=' '">
+            More About PCGF2 Here
+        </button>
+    </div>
+</section>
+
+<!-- Forum link section -->
+<section>
+    <div>
+        <h3>The PCGF2 Forum</h3>
+        <button onclick="window.location.href=' '">
+            Join the Discussion!
+        </button>
+    </div>
+</section>
+
+<!-- Facebook group link section -->
+<section>
+    <div>
+        <h3>The PCGF2 Facebook group</h3>
+        <button onclick="window.open('https://www.facebook.com/groups/600061436853671', '_blank')" rel="noopener" aria-label="Facebook Group">
+            Join the Group Here
+        </button>
+    </div>
+</section>
+
+
 {% endblock %}
