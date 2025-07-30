@@ -22,6 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
-    path('fourm/', include('fourm.urls')),
+    path('forum/', include('forum.urls')),
     path('profile/', include('users.urls')),
 ]
