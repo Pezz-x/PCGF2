@@ -1,9 +1,77 @@
 {% extends "base.html" %}
-
-{% block title %}
-Forum
-{% endblock %}
+{% load static %}
 
 {% block content %}
-<h1>Forum Page (Backend Needed)</h1>
+<h1>Turnpenny-Fry Syndrone (PCGF2)</h1>
+
+<h1>Forum</h1>
+    {% if posts %}
+        {% for post in posts %}
+            <article style="margin-bottom:2em; border:1px solid #ccc; padding:1em;">
+                <!-- Header: author info -->
+                <div class="post-header">
+                    <div style="display:flex; align-items:center; gap:0.5em;">
+                        <div>
+                            <img
+                                src="{% if post.author.profile_photo %}{{ post.author.profile_photo.url }}{% else %}{% static 'images/default_profile.png' %}{% endif %}"
+                                alt="Profile photo"
+                                width="50"
+                                height="50"
+                            />
+                        </div>
+                        <div>
+                            <strong>
+                                {{ post.author.first_name }} {{ post.author.last_name }}
+                                {% if not post.author.first_name and not post.author.last_name %}
+                                    {{ post.author.email }}
+                                {% endif %}
+                            </strong>
+                            <div>
+                                {% if post.author.relation_to_pcgf2 %}
+                                    Relation: {{ post.author.get_relation_to_pcgf2_display }}
+                                {% endif %}
+                            </div>
+                            <div>
+                                <small>{{ post.time_created|date:"F j, Y, g:i a" }}</small>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- edit/delete if owner -->
+                    {% if user.is_authenticated and post.author == user.profile %}
+                        <div style="margin-top:0.5em;">
+                            <a href="{% url 'post_edit' post.pk %}">Edit</a> |
+                            <a href="{% url 'post_delete' post.pk %}">Delete</a>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- Body: image + preview text -->
+                <div class="post-body" style="margin-top:1em;">
+                    {% if post.image %}
+                        <div class="post-image">
+                            <a href="{% url 'post_detail' post.pk %}">
+                                <img src="{{ post.image.url }}" alt="Post image" width="400" />
+                            </a>
+                        </div>
+                    {% endif %}
+                    <div class="post-text">
+                        <p>
+                            <a href="{% url 'post_detail' post.pk %}">
+                                {{ post.content|truncatechars:200 }}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Footer: likes/comments -->
+                <div class="post-footer" style="margin-top:0.5em;">
+                    <span>❤️ {{ post.likes_count }}</span>
+                    <span style="margin-left:1em;">💬 {{ post.comments_count }}</span>
+                </div>
+            </article>
+        {% endfor %}
+    {% else %}
+        <p>No posts to show.</p>
+    {% endif %}
+
 {% endblock %}

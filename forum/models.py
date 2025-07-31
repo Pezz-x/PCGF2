@@ -11,7 +11,7 @@ class Post(models.Model):
     body = models.TextField()
     images = CloudinaryField('images', blank=True, null=True)
     time_created = models.DateTimeField(auto_now=True)
-    # likes = models.Count() TO RESEARCH
+    likes = models.PositiveIntegerField(default=0)
 
     class Meta:
         ordering = ["-time_created"]

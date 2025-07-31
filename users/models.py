@@ -18,6 +18,7 @@ class Profile(models.Model):
     profile_photo = CloudinaryField("image", blank=True, null=True, folder="static\images\PCGF2_defult_profile.png")
     email = models.EmailField(blank=True, null=True, unique=True)
     password = models.CharField(("password"), max_length=128)
+    bio = models.TextField(blank=True, null=True)
     verified = models.BooleanField(default=False)
     joined = models.DateTimeField(default=timezone.now)
 
