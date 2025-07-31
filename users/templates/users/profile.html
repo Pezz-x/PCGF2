@@ -6,4 +6,16 @@ Profile
 
 {% block content %}
 <h1>User Profile (Backend Needed)</h1>
+
+<!-- LOAD PROFILE IMAGE
+
+{% load static %}
+
+<img
+  src="{% if profile.profile_photo %}{{ profile.profile_photo.url }}{% else %}{% static 'images/default_profile.png' %}{% endif %}"
+  alt="Profile photo of {{ profile.first_name }}"
+/>
+
+-->
+
 {% endblock %}
