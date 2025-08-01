@@ -24,4 +24,5 @@ urlpatterns = [
     path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
     path('forum/', include('forum.urls')),
     path('profile/', include('users.urls')),
+    path("accounts/", include("allauth.urls")),
 ]
