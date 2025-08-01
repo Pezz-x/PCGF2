@@ -16,7 +16,6 @@
     {% if profile.relation_to_pcgf2 %}
       <p>Relation to PCGF2: {{ profile.get_relation_to_pcgf2_display }}</p>
     {% endif %}
-    <p>Email: {{ profile.email }}</p>
     {% if user.is_authenticated and user == profile.user %}
         <a href="{% url 'profile_edit' %}">Edit</a>
     {% endif %}
