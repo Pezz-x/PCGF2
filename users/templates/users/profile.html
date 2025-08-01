@@ -6,13 +6,18 @@
 <!-- Profile header -->
 <section id="profile-header">
   <div>
-    <img src="{% if profile.profile_photo %}{{ profile.profile_photo.url }}{% else %}{% static 'images/default_profile.png' %}{% endif %}" 
+    <img src="{% if profile.profile_photo %}{{ profile.profile_photo.url }}{% else %}{% static 'images/PCGF2_default_profile.png' %}{% endif %}" 
     alt="Profile photo of {{ profile.first_name }}" 
     width="100" 
     height="100">
   </div>
   <div>
-    <h1>{{ profile }} {{ profile.last_name}}</h1>
+    <h1>
+      {{ profile.first_name }} {{ profile.last_name}}
+      {% if not post.author.first_name and not post.author.last_name %}
+          User with no name
+      {% endif %}
+    </h1>
     {% if profile.relation_to_pcgf2 %}
       <p>Relation to PCGF2: {{ profile.get_relation_to_pcgf2_display }}</p>
     {% endif %}

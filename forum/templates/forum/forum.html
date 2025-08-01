@@ -13,7 +13,7 @@
                     <div style="display:flex; align-items:center; gap:0.5em;">
                         <div>
                             <img
-                                src="{% if post.author.profile_photo %}{{ post.author.profile_photo.url }}{% else %}{% static 'images/default_profile.png' %}{% endif %}"
+                                src="{% if post.author.profile_photo %}{{ post.author.profile_photo.url }}{% else %}{% static 'images/PCGF2_default_profile.png' %}{% endif %}"
                                 alt="Profile photo"
                                 width="50"
                                 height="50"
@@ -23,7 +23,7 @@
                             <strong>
                                 {{ post.author.first_name }} {{ post.author.last_name }}
                                 {% if not post.author.first_name and not post.author.last_name %}
-                                    {{ post.author.email }}
+                                    User with no name
                                 {% endif %}
                             </strong>
                             <div>
@@ -47,6 +47,13 @@
 
                 <!-- Body: image + preview text -->
                 <div class="post-body" style="margin-top:1em;">
+                    <div>
+                        <h3>
+                            <a href="{% url 'post_detail' post.pk %}">
+                                {{ post.title }}
+                            </a>
+                        </h3>
+                    </div>
                     {% if post.image %}
                         <div class="post-image">
                             <a href="{% url 'post_detail' post.pk %}">
@@ -56,9 +63,7 @@
                     {% endif %}
                     <div class="post-text">
                         <p>
-                            <a href="{% url 'post_detail' post.pk %}">
-                                {{ post.content|truncatechars:200 }}
-                            </a>
+                            {{ post.body|truncatechars:200 }}
                         </p>
                     </div>
                 </div>
