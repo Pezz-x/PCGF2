@@ -115,7 +115,7 @@ main {
 
 /* tab-bar (icon + label nav) */
 .tab-bar {
-  background: white;
+  background: wheat;
   border-radius: var(--radius);
   padding: 4px 0;
 }
@@ -144,12 +144,13 @@ main {
 }
 
 .tab-bar a .icon {
-  font-size: 1.2rem; /* adjust if using SVG */
+  font-size: 2rem;
   line-height: 1;
 }
 
 .tab-bar a .label {
   line-height: 1.1;
+  font-size: .8rem;
 }
 
 .tab-bar a.active,
@@ -215,6 +216,7 @@ main {
   fill: var(--muted);
 }
 
+/* Footer */
 footer {
     background-color: wheat;
     width: 100%;
