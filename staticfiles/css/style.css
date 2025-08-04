@@ -1,0 +1,57 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --title-font: "Monsterrat", sans-serif;
+    --para-font: "Roboto", sans-serif;
+    --base-color: white;
+    --base-variant: wheat;
+    --text-color: black;
+    --primary-color: #232738;
+    --accent-color: #0071ff;
+}
+
+.darkmode{
+    --base-color: #070b1d;
+    --base-variant: #101425;
+    --text-color: #ffffff;
+    --primary-color: #3a435d;
+    --accent-color: #0071ff;
+}
+
+/* Dark mode switch start */
+#theme-switch{
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: var(--base-variant);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+#theme-switch svg{
+    fill: var(--primary-color);
+}
+#theme-switch svg:last-child{
+    display: none;
+}
+.darkmode #theme-switch svg:first-child{
+    display: none;
+}
+.darkmode #theme-switch svg:last-child{
+    display: block;
+}
+/* Dark mode switch end */
+
+#site-title {
+    font-family: var(--title-font);
+    color: red;
+}
+
+body {
+    background-color: red;
+}
