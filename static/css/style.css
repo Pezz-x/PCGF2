@@ -251,6 +251,10 @@ footer {
   border-radius: 0.5rem;
 }
 
+.about {
+  background-color: red;
+}
+
 /* Responsive media queries */
 
 /* Small devices (max-width: 600px) */
