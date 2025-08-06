@@ -5,19 +5,19 @@
     --title-font: "Montserrat", sans-serif;
     --para-font: "Roboto", sans-serif;
 
-    --base-color: #f8fafc;         /* Snow White */
-    --base-variant: #e2e8f0;       /* Light Slate */
-    --text-color: #0f172a;         /* Midnight Slate */
-    --primary-color: #2563eb;      /* Royal Blue */
-    --accent-color: #0ea5e9;       /* Cyan Sky */
+    --base-color: white;
+    --base-variant: white;
+    --text-color: black;
+    --primary-color: #232738;
+    --accent-color: #0071ff;
 }
 
 .darkmode{
-    --base-color: #0f172a;         /* Midnight Slate */
-    --base-variant: #1e293b;       /* Charcoal Blue */
-    --text-color: #f1f5f9;         /* Soft Ice */
-    --primary-color: #3b82f6;      /* Soft Blue */
-    --accent-color: #7dd3fc;       /* Sky Blue */
+    --base-color: #070b1d;
+    --base-variant: #101425;
+    --text-color: #ffffff;
+    --primary-color: #3a435d;
+    --accent-color: #0071ff;
 }
 
 
@@ -43,7 +43,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 50;
-  background-color: var(--base-variant)
+  background-color: wheat;
 }
 
 /* top bar: logo + search */
@@ -65,7 +65,6 @@ body {
 
 #site-title {
   font-family: var(--title-font);
-  color: var(--text-color);
   font-size: 1rem;
   font-weight: 700;
   white-space: nowrap;
@@ -75,7 +74,6 @@ body {
 
 #logged-in-status {
   font-family: var(--para-font);
-  color: var(--text-color);
   font-size: .8rem;
   font-weight: 300;
   white-space: nowrap;
@@ -114,7 +112,7 @@ body {
 
 /* tab-bar (icon + label nav) */
 .tab-bar {
-  background: var(--base-variant);
+  background: wheat;
   border-radius: var(--radius);
   padding: 4px 0;
 }
@@ -165,7 +163,7 @@ body {
   height: 3px;
   left: 25%;
   right: 25%;
-  background: var(--accent-color);
+  background: #0071ff;
   border-radius: 2px;
 }
 
@@ -217,7 +215,7 @@ body {
 
 /* Footer */
 footer {
-    background-color: var(--base-variant);
+    background-color: wheat;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -241,7 +239,7 @@ footer {
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: var(--base-color);
+  color: white;
   padding: 0 1rem;
 }
 
@@ -253,6 +251,9 @@ footer {
   border-radius: 0.5rem;
 }
 
+.about {
+  background-color: red;
+}
 
 /* Responsive media queries */
 
@@ -274,5 +275,6 @@ footer {
 @media (min-width: 1200px) {
   main {
     margin: 0% 10% 0% 10%;
+    background-color: aquamarine;
   }
 }
