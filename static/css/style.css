@@ -24,12 +24,12 @@
 body {
   margin: 0;
   font-family: var(--body-font);
-  background: var(--bg);
-  color: var(--text);
+  background-color: var(--base-color);
+  color: var(--text-color);
 }
 
 main {
-    margin: 10px;
+
 }
 
 /* HEADER */
@@ -228,4 +228,52 @@ footer {
     bottom: 0;
     padding: 6px 12px;
     align-items: center;
+}
+
+/* Home page */
+
+.hero {
+  height: 50vh;
+  background-image: url('../images/Hero_image_mungo.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 0 1rem;
+}
+
+.hero-content {
+  max-width: 800px;
+  background-color: rgba(0,0,0,0.5);
+  padding: 2rem;
+  font-family: var(--title-font);
+  border-radius: 0.5rem;
+}
+
+/* Responsive media queries */
+
+/* Small devices (max-width: 600px) */
+@media (max-width: 600px) {
+}
+
+/* Medium devices (max-width: 768px) */
+@media (max-width: 768px) {
+
+}
+
+/* Large devices (max-width: 992px) */
+@media (max-width: 992px) {
+
+}
+
+/* Extra large devices (max-width: 1200px) */
+@media (min-width: 1200px) {
+  main {
+    margin: 0% 10% 0% 10%;
+    background-color: aquamarine;
+  }
 }
