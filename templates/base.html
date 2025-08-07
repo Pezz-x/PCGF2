@@ -41,8 +41,8 @@
                 <div id="logged-in-status">
                     {% if user.is_authenticated %}
                     <!-- Code to render if user is logged in -->
-                    <p>Logged in as {{ post.author.first_name }} {{ post.author.last_name }}
-                        {% if not post.author.first_name and not post.author.last_name %}
+                    <p>Logged in as {{ user }}
+                        {% if not user %}
                             User with no name
                             <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
                         {% endif %}
