@@ -1,0 +1,279 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --title-font: "Montserrat", sans-serif;
+    --para-font: "Roboto", sans-serif;
+
+    --base-color: #f0efef;        /* Off White */
+    --base-variant: #FFFFFF;      /* Light Grey */
+    --text-color: #1c1c1c;        /* Charcoal Black */
+    --primary-color: #946FA7;     /* Muted Blue (same as dark mode) */
+    --accent-color: #125BCA;      /* Soft Charcoal */
+}
+
+.darkmode{
+    --base-color: #1C1C1D;
+    --base-variant: #292c2e;
+    --text-color: #FFFFFF;
+    --primary-color: #946FA7;     
+    --accent-color: #125BCA;      
+}
+
+
+body {
+  margin: 0;
+  font-family: var(--body-font);
+  background-color: var(--base-color);
+  color: var(--text-color);
+}
+
+
+/* HEADER */
+.site-header {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px 12px;
+  margin: 0 auto;
+  box-shadow: 0px 10px 15px rgba(0,0,0,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: var(--base-variant);
+  border-bottom: 2px solid var(--base-color);
+}
+
+/* top bar: Title, logged in status and darkmode*/
+#site-title {
+  font-family: var(--title-font);
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: wrap;
+  color: var(--text);
+  justify-content: left;
+}
+
+#logged-in-status {
+  display: flex;
+  justify-content: flex-end;
+  font-family: var(--para-font);
+  color: var(--text-color);
+  font-size: .8rem;
+  font-weight: 300;
+  color: var(--text);
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#top-bar-additional {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+}
+
+#darkmode-switch {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Dark mode switch start */
+#theme-switch{
+  height: 40px;
+  width: 40px;
+  padding: 0;
+  border-radius: 50%;
+  background-color: var(--base-variant);
+  top: 10px;
+  right: 10px;
+  margin-left: 1rem;
+}
+#theme-switch i{
+    color: var(--accent-color);
+}
+#theme-switch i:last-child{
+    display: none;
+}
+.darkmode #theme-switch i:first-child{
+    display: none;
+}
+.darkmode #theme-switch i:last-child{
+    display: block;
+}
+/* Dark mode switch end */
+
+
+/* tab-bar (icon + label nav) */
+.tab-bar {
+  background: var(--base-variant);
+  border-radius: var(--radius);
+  padding: 4px 0;
+}
+
+.tab-bar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.tab-bar a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--muted);
+  padding: 6px 4px;
+  min-width: 60px;
+  position: relative;
+  transition: color var(--transition);
+}
+
+.tab-bar a .icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.tab-bar a .label {
+  line-height: 1.1;
+  font-size: .8rem;
+}
+
+.tab-bar a.active,
+.tab-bar a:focus,
+.tab-bar a:hover {
+  color: var(--text);
+}
+
+.tab-bar a.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  left: 25%;
+  right: 25%;
+  background: var(--accent-color);
+  border-radius: 2px;
+}
+
+
+
+/* search input with mic */
+.search-wrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-wrapper input[type="search"] {
+  width: 100%;
+  padding: 8px 40px 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+  font-family: var(--body-font);
+  outline: none;
+  background: #fff;
+  transition: box-shadow var(--transition), border var(--transition);
+}
+
+.search-wrapper input:focus {
+  box-shadow: 0 0 0 3px rgba(0,113,255,0.3);
+  border-color: #0071ff;
+}
+
+.search-wrapper .mic-btn {
+  position: absolute;
+  right: 6px;
+  background: none;
+  border: none;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.search-wrapper .mic-btn svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  fill: var(--muted);
+}
+
+/* Footer */
+footer {
+    background-color: var(--base-variant);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    bottom: 0;
+    padding: 6px 12px;
+    align-items: center;
+}
+
+/* Home page */
+
+.hero {
+  height: 40vh;
+  background-image: url('../images/Hero_image_mungo.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--base-color);
+  padding: 0 1rem;
+  box-shadow: 0px 10px 15px rgba(0,0,0,0.06);
+}
+
+.hero-content {
+  max-width: 800px;
+  background-color: rgba(0,0,0,0.3);
+  padding: 2rem;
+  font-family: var(--title-font);
+  color: var(--text-color);
+  border-radius: 0.5rem;
+}
+
+
+/* Responsive media queries */
+
+/* Small devices (max-width: 600px) */
+@media (max-width: 600px) {
+}
+
+/* Medium devices (max-width: 768px) */
+@media (max-width: 768px) {
+
+}
+
+/* Large devices (max-width: 992px) */
+@media (max-width: 992px) {
+
+}
+
+/* Extra large devices (max-width: 1200px) */
+@media (min-width: 1200px) {
+  main {
+    margin: 0% 10% 0% 10%;
+  }
+}
