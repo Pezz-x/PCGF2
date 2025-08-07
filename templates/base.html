@@ -21,34 +21,42 @@
     <!-- Navigation bar -->
      <header class="site-header">
         <div class="top-bar">
-            <div class="logo">
+            <div class="top-bar-title">
                 <!-- site title -->
                 <span id="site-title">
                     <h1>Turnpenny-Fry Syndrome (PCGF2)</h1>
                 </span>
             </div>
 
-        <div id="logged-in-status">
-            {% if user.is_authenticated %}
-            <!-- Code to render if user is logged in -->
-            <p>Logged in as {{ post.author.first_name }} {{ post.author.last_name }}
-                {% if not post.author.first_name and not post.author.last_name %}
-                    User with no name
-                    <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
-                {% endif %}
-            </p>
-            {% else %}
-            <!-- Code to render if user is logged out -->
-            <p>logged out</p>
-            {% endif %}
-        </div>
-            <div>
-                <!-- darkmode theme switch -->
-                <button id="theme-switch">
-                    <i class="fa-solid fa-sun"></i>
-                    <i class="fa-solid fa-moon"></i>
-                </button>
+            <div id="top-bar-additional">
+
+                    <div id="darkmode-switch">
+                    <!-- darkmode theme switch -->
+                    <button id="theme-switch">
+                        <i class="fa-solid fa-sun"></i>
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                </div>
+
+                <div id="logged-in-status">
+                    {% if user.is_authenticated %}
+                    <!-- Code to render if user is logged in -->
+                    <p>Logged in as {{ post.author.first_name }} {{ post.author.last_name }}
+                        {% if not post.author.first_name and not post.author.last_name %}
+                            User with no name
+                            <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
+                        {% endif %}
+                    </p>
+                    {% else %}
+                    <!-- Code to render if user is logged out -->
+                    <p>logged out</p>
+                    {% endif %}
+                </div>
+
+
+
             </div>
+
         </div>
         
         <!-- Nav items -->
