@@ -17,7 +17,7 @@
 </div>
     {% if not user.is_authenticated %}
     <script>
-        window.location.href = "{% url 'login' %}";
+        window.location.href = "{% url 'account_login' %}";
     </script>
     {% else %}
         {% if posts %}
