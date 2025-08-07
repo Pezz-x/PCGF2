@@ -13,8 +13,8 @@
   </div>
   <div>
     <h1>
-      {{ profile.first_name }} {{ profile.last_name}}
-      {% if not post.author.first_name and not post.author.last_name %}
+      {{ user }}
+      {% if not user %}
           User with no name
       {% endif %}
     </h1>

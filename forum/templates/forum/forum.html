@@ -36,14 +36,16 @@
                             </div>
                             <div>
                                 <strong>
-                                    {{ post.author.first_name }} {{ post.author.last_name }}
-                                    {% if not post.author.first_name and not post.author.last_name %}
+                                    {{ user }}
+                                    {% if not user %}
                                         User with no name
                                     {% endif %}
                                 </strong>
                                 <div>
                                     {% if post.author.relation_to_pcgf2 %}
                                         Relation: {{ post.author.get_relation_to_pcgf2_display }}
+                                    {% else %}
+                                        Relation: No relation to PCGF2 provided.
                                     {% endif %}
                                 </div>
                                 <div>
