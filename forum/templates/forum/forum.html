@@ -5,15 +5,19 @@
 
 <h1>Forum</h1>
 
-<!-- search box -->
-<div class="search-wrapper">
-<input type="search" placeholder="search users and posts" aria-label="Search users" />
-<button aria-label="Voice search" class="mic-btn">
-    <!-- simple mic icon -->
-    <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20" fill="currentColor">
-    <path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 14 0h-2zm-5 7a7 7 0 0 1-7-7h2a5 5 0 0 0 10 0h2a7 7 0 0 1-7 7zm-1 3h2v2h-2v-2z"/>
-    </svg>
-</button>
+<!-- Create Post Section -->
+<div class="card mb-4">
+    <div class="card-body">
+        <h2 class="card-title">Create a Post</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% load crispy_forms_tags %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-primary">Post</button>
+        </form>
+    </div>
+</div>
+
 </div>
     {% if not user.is_authenticated %}
     <script>
