@@ -26,3 +26,4 @@ urlpatterns = [
     path('profile/', include('users.urls')),
     path("accounts/", include("allauth.urls")),
 ]
+
