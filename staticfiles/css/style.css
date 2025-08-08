@@ -228,7 +228,7 @@ footer {
     align-items: center;
 }
 
-/* Home page */
+/* Home Page */
 
 .hero {
   height: 40vh;
@@ -253,6 +253,9 @@ footer {
   color: var(--text-color);
   border-radius: 0.5rem;
 }
+
+/* Forum Page */
+
 
 
 /* Responsive media queries */

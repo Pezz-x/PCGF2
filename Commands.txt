@@ -45,6 +45,9 @@ python manage.py migrate {APP NAME}
 python manage.py migrate {APP NAME} zero
 
 
+-- collect static files
+ python manage.py collectstatic
+
 -- run tests
 python manage.py test
 
