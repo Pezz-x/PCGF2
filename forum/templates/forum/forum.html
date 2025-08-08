@@ -40,7 +40,7 @@
                             </div>
                             <div>
                                 <strong>
-                                    {{ user }}
+                                    {{ post.author }}
                                     {% if not user %}
                                         User with no name
                                     {% endif %}
@@ -75,10 +75,11 @@
                                 </a>
                             </h3>
                         </div>
-                        {% if post.image %}
-                            <div class="post-image">
+                        <!-- Load image -->
+                        {% if post.images %}
+                            <div class="post-images">
                                 <a href="{% url 'post_detail' post.pk %}">
-                                    <img src="{{ post.image.url }}" alt="Post image" width="400" />
+                                    <img src="{{ post.images.url }}" alt="{{ post.title}} images" width="400" />
                                 </a>
                             </div>
                         {% endif %}
