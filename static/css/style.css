@@ -229,7 +229,7 @@ footer {
 }
 
 /* Home Page */
-
+/* Hero section */
 .hero {
   height: 40vh;
   background-image: url('../images/Hero_image_mungo.webp');
@@ -246,6 +246,81 @@ footer {
 }
 
 .hero-content {
+  max-width: 800px;
+  background-color: rgba(0,0,0,0.3);
+  padding: 2rem;
+  font-family: var(--title-font);
+  color: var(--text-color);
+  border-radius: 0.5rem;
+}
+
+/* About Section */
+.about_section {
+  height: 40vh;
+  background-image: url('../images/Trunpenny.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--base-color);
+  padding: 0 1rem;
+  box-shadow: 0px 10px 15px rgba(0,0,0,0.06);
+}
+
+.about_section_content {
+  max-width: 800px;
+  background-color: rgba(0,0,0,0.3);
+  padding: 2rem;
+  font-family: var(--title-font);
+  color: var(--text-color);
+  border-radius: 0.5rem;
+}
+
+/* Fourm Section */
+.forum_section {
+  height: 40vh;
+  background-image: url('../images/Fourm_stock.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--base-color);
+  padding: 0 1rem;
+  box-shadow: 0px 10px 15px rgba(0,0,0,0.06);
+}
+
+.forum_section_content {
+  max-width: 800px;
+  background-color: rgba(0,0,0,0.3);
+  padding: 2rem;
+  font-family: var(--title-font);
+  color: var(--text-color);
+  border-radius: 0.5rem;
+}
+
+/* FB Group Section */
+.fbgroup_section {
+  height: 40vh;
+  background-image: url('../images/FB_group_screenshot.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--base-color);
+  padding: 0 1rem;
+  box-shadow: 0px 10px 15px rgba(0,0,0,0.06);
+}
+
+.fbgroup_section_content {
   max-width: 800px;
   background-color: rgba(0,0,0,0.3);
   padding: 2rem;

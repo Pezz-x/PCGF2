@@ -23,19 +23,18 @@ def forum_view(request):
     
 # POST DETAIL PAGE
 @login_required
-
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
-    comments = post.comments.all()
+    comments = post.comments.all()  # related_name in Comment model
 
-    if request.method == "POST":
+    if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.post = post
             comment.author = request.user
             comment.save()
-            return redirect('post_detail', slug=post.slug)  # prevents re-posting
+            return redirect('post_detail', slug=post.slug)  # Redirect after POST
     else:
         form = CommentForm()
 
@@ -119,27 +118,33 @@ def comment_like_toggle(request, comment_id):
 # COMMENT EDIT PAGE
 @login_required
 def comment_edit(request, slug, comment_id):
-    post = get_object_or_404(Post, slug=slug)
-    comment = get_object_or_404(Comment, id=comment_id, slug=slug)
-    if comment.author != request.user:
+    comment = get_object_or_404(Comment, id=comment_id, post__slug=slug)
+
+    if request.user != comment.author and not request.user.is_superuser:
         return HttpResponseForbidden()
+
     if request.method == 'POST':
-        form = CommentForm(request.POST, request.FILES, instance=comment)
+        form = CommentForm(request.POST, instance=comment)
         if form.is_valid():
             form.save()
             return redirect('post_detail', slug=slug)
     else:
         form = CommentForm(instance=comment)
-    return render(request, 'forum/comment_edit.html', {'form': form, 'post': post, 'comment': comment})
+
+    return render(request, 'forum/comment_edit.html', {'form': form, 'comment': comment})
 
 # COMMENT DELETE PAGE
 @login_required
 def comment_delete(request, slug, comment_id):
-    post = get_object_or_404(Post, slug=slug)
-    comment = get_object_or_404(Comment, id=comment_id, slug=slug)
-    if comment.author != request.user:
+    comment = get_object_or_404(Comment, id=comment_id, post__slug=slug)
+
+    if request.user != comment.author and not request.user.is_superuser:
         return HttpResponseForbidden()
+
     if request.method == 'POST':
         comment.delete()
         return redirect('post_detail', slug=slug)
-    return render(request, 'forum/comment_confirm_delete.html', {'post': post, 'comment': comment})
+
+    return render(request, 'forum/comment_confirm_delete.html', {'comment': comment})
+
+
