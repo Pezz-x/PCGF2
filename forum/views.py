@@ -6,6 +6,8 @@ from .forms import PostForm, CommentForm
 from .models import Post, Comment
 
 # Create your views here.
+
+# FOURM PAGE
 def forum_view(request):
     posts = Post.objects.all()
     if request.method == 'POST':
@@ -20,17 +22,18 @@ def forum_view(request):
     return render(request, 'forum/forum.html', {'posts': posts, 'form': form})
     
 # POST DETAIL PAGE
+@login_required
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
     comments = post.comments.all()
     comment_form = CommentForm()
-    return render(request, 'post_detail.html', {
+    return render(request, 'forum/post_detail.html', {
         'post': post,
         'comments': comments,
         'comment_form': comment_form
     })
 
-
+# POST EDIT PAGE
 @login_required
 def post_edit(request, slug):
     post = get_object_or_404(Post, slug=slug)
@@ -45,7 +48,7 @@ def post_edit(request, slug):
         form = PostForm(instance=post)
     return render(request, 'forum/post_edit.html', {'form': form, 'post': post})
 
-
+# POST DELETE PAGE
 @login_required
 def post_delete(request, slug):
     post = get_object_or_404(Post, slug=slug)
@@ -56,7 +59,7 @@ def post_delete(request, slug):
         return redirect('forum')
     return render(request, 'forum/post_confirm_delete.html', {'post': post})
 
-
+# POST LIKE TOGGLE
 @login_required
 @require_POST
 def post_like_toggle(request, slug):
@@ -70,6 +73,7 @@ def post_like_toggle(request, slug):
         liked = True
     return JsonResponse({'liked': liked, 'likes_count': post.likes_count})
 
+# POST COMMENT PAGE
 @login_required
 @require_POST
 def add_comment(request, slug):
@@ -86,7 +90,7 @@ def add_comment(request, slug):
         form = CommentForm()
     return render(request, 'post_detail.html', {'post': post, 'comment_form': form})
 
-
+# COMMENT LIKE TOGGLE
 @login_required
 @require_POST
 def comment_like_toggle(request, slug):
@@ -100,6 +104,7 @@ def comment_like_toggle(request, slug):
         liked = True
     return JsonResponse({'liked': liked, 'likes_count': comment.likes_count})
 
+# COMMENT EDIT PAGE
 @login_required
 def comment_edit(request, slug, comment_id):
     post = get_object_or_404(Post, slug=slug)
@@ -115,7 +120,7 @@ def comment_edit(request, slug, comment_id):
         form = CommentForm(instance=comment)
     return render(request, 'forum/comment_edit.html', {'form': form, 'post': post, 'comment': comment})
 
-
+# COMMENT DELETE PAGE
 @login_required
 def comment_delete(request, slug, comment_id):
     post = get_object_or_404(Post, slug=slug)
