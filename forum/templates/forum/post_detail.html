@@ -1,9 +1,95 @@
 {% extends "base.html" %}
-{% load static %}
-{% load crispy_forms_tags %}
-
 {% block content %}
 
-<h2>post details page</h2>
+<div class="post-detail">
+    <h2>{{ post.title }}</h2>
+    <p class="post-meta">
+        Posted by {{ post.author }} on {{ post.time_created|date:"F j, Y, g:i a" }}
+    </p>
+
+    {% if post.image %}
+    <div class="post-image">
+        <img src="{{ post.image.url }}" alt="Post image" width="500" />
+    </div>
+    {% endif %}
+
+    <div class="post-body">{{ post.body|linebreaks }}</div>
+
+    <!-- Edit/Delete buttons for post -->
+    {% if user == post.author %}
+    <div class="post-actions">
+        <a href="{% url 'post_edit' post.slug %}" class="btn">Edit</a>
+        <form id="delete-post-form" method="post" action="{% url 'post_delete' post.slug %}" style="display: none">
+            {% csrf_token %}
+        </form>
+    </div>
+    {% endif %}
+
+    <hr />
+
+    <!-- Likes -->
+    <div class="likes-section">
+        <form method="post" action="{% url 'post_like_toggle' post.slug %}">
+            {% csrf_token %}
+            {% if post.liked_by_user %}
+                <button type="submit" class="btn btn-unlike">Unlike</button>
+            {% else %}
+                <button type="submit" class="btn btn-like">Like</button>
+            {% endif %}
+        </form>
+        <span>{{ post.like_count }} like{{ post.like_count|pluralize }}</span>
+    </div>
+
+    <hr />
+
+    <!-- Comments -->
+    <h3>Comments ({{ comments.count }})</h3>
+    {% for comment in comments %}
+    <div class="comment">
+        <p>
+            <strong>{{ comment.author }}</strong> on {{ comment.created_on|date:"F j, Y, g:i a" }}
+        </p>
+        <p>{{ comment.body|linebreaks }}</p>
+
+        <div class="comment-actions">
+            <!-- Comment likes -->
+            <form method="post" action="{% url 'toggle_comment_like' comment.id %}">
+                {% csrf_token %}
+                {% if comment.liked_by_user %}
+                    <button type="submit" class="btn btn-unlike">Unlike</button>
+                {% else %}
+                    <button type="submit" class="btn btn-like">Like</button>
+                {% endif %}
+            </form>
+            <span>{{ comment.like_count }} like{{ comment.like_count|pluralize }}</span>
+
+            <!-- Edit/Delete buttons for comment -->
+            {% if user == comment.author %}
+                <a href="{% url 'comment_edit' post.slug comment.id %}" class="btn">Edit</a>
+                <form method="post" action="{% url 'comment_delete' post.slug comment.id %}" style="display: inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+    {% empty %}
+    <p>No comments yet.</p>
+    {% endfor %}
+
+    <hr />
+
+    <!-- Add Comment Form -->
+    {% if user.is_authenticated %}
+    <form method="post" action="{% url 'post_detail' post.slug %}">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <button type="submit" class="btn btn-submit">Submit</button>
+    </form>
+    {% else %}
+        <p><a href="{% url 'login' %}">Log in</a> to add a comment.</p>
+    {% endif %}
+</div>
+
 
 {% endblock %}

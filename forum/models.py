@@ -12,7 +12,7 @@ class Post(models.Model):
     body = models.TextField()
     images = CloudinaryField('images', blank=True, null=True)
     time_created = models.DateTimeField(auto_now=True)
-    likes = models.PositiveIntegerField(default=0)
+    liked_by = models.ManyToManyField(User, related_name="liked_posts", blank=True)
 
     class Meta:
         ordering = ["-time_created"]
@@ -30,6 +30,14 @@ class Post(models.Model):
 
     def __str__(self):
         return f"{self.title} | written by {self.author}"
+    
+    @property
+    def likes_count(self):
+        return self.liked_by.count()
+
+    @property
+    def comments_count(self):
+        return self.comments.count()
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
@@ -37,10 +45,14 @@ class Comment(models.Model):
     body = models.TextField()
     images = CloudinaryField('images', blank=True, null=True)
     created_on = models.DateTimeField(auto_now=True)
-    # likes = models.Count() TO RESEARCH
+    liked_by = models.ManyToManyField(User, related_name="liked_comments", blank=True)
 
     class Meta:
         ordering = ["-created_on"]
         
     def __str__(self):
         return f"Comment {self.body}. by {self.author}"
+    
+    @property
+    def likes_count(self):
+        return self.liked_by.count()

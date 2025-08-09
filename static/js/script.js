@@ -22,3 +22,4 @@ themeSwitch.addEventListener("click", () => {
         disableDarkmode()
      }
 })
+

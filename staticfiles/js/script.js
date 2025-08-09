@@ -22,3 +22,12 @@ themeSwitch.addEventListener("click", () => {
         disableDarkmode()
      }
 })
+
+// Delete confirmation pop up model //
+
+function openDeleteModal(slug) {
+  document.getElementById(`delete-modal-${slug}`).style.display = 'flex';
+}
+function closeDeleteModal(slug) {
+  document.getElementById(`delete-modal-${slug}`).style.display = 'none';
+}
