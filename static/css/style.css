@@ -5,19 +5,19 @@
     --title-font: "Montserrat", sans-serif;
     --para-font: "Roboto", sans-serif;
 
-    --base-color: #f0efef;        /* Off White */
-    --base-variant: #FFFFFF;      /* Light Grey */
-    --text-color: #1c1c1c;        /* Charcoal Black */
-    --primary-color: #946FA7;     /* Muted Blue (same as dark mode) */
-    --accent-color: #125BCA;      /* Soft Charcoal */
+    --base-color: #f0efef;      
+    --base-variant: #FFFFFF;    
+    --text-color: #1c1c1c;       
+    --primary-color: #F2A341;    
+    --accent-color: #1763A6;     
 }
 
 .darkmode{
     --base-color: #1C1C1D;
     --base-variant: #292c2e;
     --text-color: #FFFFFF;
-    --primary-color: #946FA7;     
-    --accent-color: #125BCA;      
+    --primary-color: #F2A341;     
+    --accent-color: #4E94BF;      
 }
 
 
@@ -168,52 +168,6 @@ body {
   border-radius: 2px;
 }
 
-
-
-/* search input with mic */
-.search-wrapper {
-  flex: 1;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.search-wrapper input[type="search"] {
-  width: 100%;
-  padding: 8px 40px 8px 12px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  font-size: 0.9rem;
-  font-family: var(--body-font);
-  outline: none;
-  background: #fff;
-  transition: box-shadow var(--transition), border var(--transition);
-}
-
-.search-wrapper input:focus {
-  box-shadow: 0 0 0 3px rgba(0,113,255,0.3);
-  border-color: #0071ff;
-}
-
-.search-wrapper .mic-btn {
-  position: absolute;
-  right: 6px;
-  background: none;
-  border: none;
-  padding: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.search-wrapper .mic-btn svg {
-  width: 18px;
-  height: 18px;
-  display: block;
-  fill: var(--muted);
-}
-
 /* Footer */
 footer {
     background-color: var(--base-variant);
@@ -327,6 +281,44 @@ footer {
   font-family: var(--title-font);
   color: var(--text-color);
   border-radius: 0.5rem;
+}
+
+/* About Page */
+#about_page {
+  margin: 2rem;
+}
+
+#about_header {
+  font-size: 30px;
+}
+
+#about_section h4{
+  font-family: var(--title-font);
+  color: var(--accent-color);
+}
+#about_section p{
+  font-family: var(--para-font);
+}
+
+#about_page li{
+  list-style-type: square;
+  color: var(--primary-color);
+}
+
+#quote_box {
+  background-color: #E8E8E8;
+  border-radius: 25px;
+  color: black;
+  padding: 2rem;
+  margin: 2rem;
+  
+}
+#quote_image {
+  display: flex;
+  justify-content: center;
+  border-radius: 4px;
+  width: 100px;
+  padding: 5px;
 }
 
 /* Forum Page */
