@@ -57,11 +57,12 @@
                                 </div>
                             </div>
                         </div>
+
                         <!-- edit/delete if owner -->
-                        {% if user.is_authenticated and post.author == user.profile %}
+                        {% if user.is_authenticated and post.author == user %}
                             <div style="margin-top:0.5em;">
-                                <a href="{% url 'post_edit' post.pk %}">Edit</a> |
-                                <a href="{% url 'post_delete' post.pk %}">Delete</a>
+                                <a href="{% url 'post_edit' post.slug %}">Edit</a> |
+                                <a href="{% url 'post_delete' post.slug %}">Delete</a>
                             </div>
                         {% endif %}
                     </div>
@@ -70,16 +71,14 @@
                     <div class="post-body" style="margin-top:1em;">
                         <div>
                             <h3>
-                                <a href="{% url 'post_detail' post.pk %}">
-                                    {{ post.title }}
-                                </a>
+                                <a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a>
                             </h3>
                         </div>
                         <!-- Load image -->
                         {% if post.images %}
                             <div class="post-images">
-                                <a href="{% url 'post_detail' post.pk %}">
-                                    <img src="{{ post.images.url }}" alt="{{ post.title}} images" width="400" />
+                                <a href="{% url 'post_detail' post.slug %}">
+                                    <img src="{{ post.images.url }}" alt="{{ post.title }} images" width="400" />
                                 </a>
                             </div>
                         {% endif %}
