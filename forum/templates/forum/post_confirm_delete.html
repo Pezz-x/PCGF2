@@ -1,4 +1,6 @@
 {% extends "base.html" %} {% block content %}
+{% load static %}
+
 <h2>Confirm delete</h2>
 <p>Are you sure you want to delete "{{ post.title }}"?</p>
 <p>{{ post.body }}</p>
