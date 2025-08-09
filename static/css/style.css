@@ -50,11 +50,10 @@ body {
 /* top bar: Title, logged in status and darkmode*/
 #site-title {
   font-family: var(--title-font);
-  color: var(--text-color);
+  color: var(--primary-color);
   font-size: 1rem;
   font-weight: 700;
   white-space: wrap;
-  color: var(--text);
   justify-content: left;
 }
 
@@ -97,7 +96,7 @@ body {
   margin-left: 1rem;
 }
 #theme-switch i{
-    color: var(--accent-color);
+    color: var(--primary-color);
 }
 #theme-switch i:last-child{
     display: none;
@@ -115,6 +114,7 @@ body {
 .tab-bar {
   background: var(--base-variant);
   border-radius: var(--radius);
+  color: var(--accent-color);
   padding: 4px 0;
 }
 
@@ -306,7 +306,10 @@ footer {
 }
 
 #quote_box {
-  background-color: #E8E8E8;
+  background-color: #e8e8e8dc;
+  border: #292c2e;
+  border-width: 1px;
+  border-style: solid;
   border-radius: 25px;
   color: black;
   padding: 2rem;
