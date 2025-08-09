@@ -7,10 +7,13 @@
         }}
     </p>
 
-    {% if post.image %}
-    <div class="post-image">
-        <img src="{{ post.image.url }}" alt="Post image" width="500" />
-    </div>
+    <!-- Load image -->
+    {% if post.images %}
+        <div class="post-images">
+            <a href="{% url 'post_detail' post.slug %}">
+                <img src="{{ post.images.url }}" alt="{{ post.title }} images" width="400" />
+            </a>
+        </div>
     {% endif %}
 
     <div class="post-body">{{ post.body|linebreaks }}</div>
