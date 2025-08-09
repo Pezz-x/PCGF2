@@ -99,9 +99,11 @@
     <!-- Add Comment Form -->
     {% if user.is_authenticated %}
     <form method="post" action="{% url 'post_detail' post.slug %}">
-        {% csrf_token %} {{ comment_form.as_p }}
-        <button type="submit" class="btn btn-submit">Submit</button>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Comment</button>
     </form>
+
     {% else %}
     <p><a href="{% url 'login' %}">Log in</a> to add a comment.</p>
     {% endif %}

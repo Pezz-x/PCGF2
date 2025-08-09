@@ -23,14 +23,26 @@ def forum_view(request):
     
 # POST DETAIL PAGE
 @login_required
+
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
     comments = post.comments.all()
-    comment_form = CommentForm()
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.author = request.user
+            comment.save()
+            return redirect('post_detail', slug=post.slug)  # prevents re-posting
+    else:
+        form = CommentForm()
+
     return render(request, 'forum/post_detail.html', {
         'post': post,
         'comments': comments,
-        'comment_form': comment_form
+        'form': form
     })
 
 # POST EDIT PAGE
