@@ -19,14 +19,7 @@ def forum_view(request):
         form = PostForm()
     return render(request, 'forum/forum.html', {'posts': posts, 'form': form})
     
-def post_detail(request, slug):
-    # Replace 'Post' with your actual model name
-    post = get_object_or_404(Post, slug=slug)
-    return render(request, 'forum/post_detail.html', {'post': post})
-
 # POST DETAIL PAGE
-
-
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
     comments = post.comments.all()
