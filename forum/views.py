@@ -93,8 +93,8 @@ def add_comment(request, slug):
 # COMMENT LIKE TOGGLE
 @login_required
 @require_POST
-def comment_like_toggle(request, slug):
-    comment = get_object_or_404(Comment, slug=slug)
+def comment_like_toggle(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
     user = request.user
     if user in comment.liked_by.all():
         comment.liked_by.remove(user)

@@ -11,7 +11,7 @@ urlpatterns = [
     path('forum/<slug:slug>/comment/', views.add_comment, name='add_comment'),
     path('forum/<slug:slug>/comment/<int:comment_id>/edit/', views.comment_edit, name='comment_edit'),
     path('forum/<slug:slug>/comment/<int:comment_id>/delete/', views.comment_delete, name='comment_delete'),
-    path('api/comment/<int:slug>/like/', views.comment_like_toggle, name='comment_like_toggle'),
+    path('forum/api/comment/<int:comment_id>/like/', views.comment_like_toggle, name='comment_like_toggle'),
 
     path('summernote/', include('django_summernote.urls')),
 ]
