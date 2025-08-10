@@ -329,6 +329,30 @@ footer {
 /* Post detail Page */
 
 
+/* Edit Pages */
+#edit-del_page {
+  margin: 2rem;
+  font-family: var(--para-font);
+}
+
+#edit-del_page h2 {
+  font-family: var(--title-font);
+  color: var(--primary-color);
+}
+#edit-del_page_btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+#edit-del_page_btn {
+  background-color: var(--primary-color);
+  font-family: var(--para-font);
+  color: var(--base-variant);
+  padding: 8px 20px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 4px;
+}
 
 /* Responsive media queries */
 
