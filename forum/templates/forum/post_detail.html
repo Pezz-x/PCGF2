@@ -3,15 +3,14 @@
 <div class="post-detail">
     <h2>{{ post.title }}</h2>
     <p class="post-meta">
-        Posted by {{ post.author }} on {{ post.time_created|date:"F j, Y, g:i a"
-        }}
+        Posted by {{ post.author }} on {{ post.time_created|date:"F j, Y, g:i a" }}
     </p>
 
-    <!-- Load image -->
+    <!-- Load post image -->
     {% if post.images %}
         <div class="post-images">
             <a href="{% url 'post_detail' post.slug %}">
-                <img src="{{ post.images.url }}" alt="{{ post.title }} images" width="400" />
+                <img src="{{ post.images.url }}" alt="{{ post.title }} image" width="400" />
             </a>
         </div>
     {% endif %}
@@ -54,39 +53,36 @@
     {% for comment in comments %}
     <div class="comment">
         <p>
-            <strong>{{ comment.author }}</strong> on {{
-            comment.created_on|date:"F j, Y, g:i a" }}
+            Comment by <strong>{{ comment.author }}</strong> on {{ comment.created_on|date:"F j, Y, g:i a" }}           
         </p>
         <p>{{ comment.body|linebreaks }}</p>
 
+        <!-- Load comment image -->
+        {% if comment.images %}
+            <div class="comment-images">
+                <a href="{% url 'post_detail' post.slug %}">
+                    <img src="{{ comment.images.url }}" alt="{{ comment.title }} image" width="400" />
+                </a>
+            </div>
+        {% endif %}
+
         <div class="comment-actions">
             <!-- Comment likes -->
-            <form
-                method="post"
-                action="{% url 'comment_like_toggle' comment.id %}"
-            >
+            <form method="post" ction="{% url 'comment_like_toggle' comment.id %}">
                 {% csrf_token %} {% if comment.liked_by_user %}
                 <button type="submit" class="btn btn-unlike">Unlike</button>
                 {% else %}
                 <button type="submit" class="btn btn-like">Like</button>
                 {% endif %}
             </form>
-            <span
-                >{{ comment.like_count }} like{{ comment.like_count|pluralize
-                }}</span
-            >
+            <span>
+                {{ comment.like_count }} like{{ comment.like_count|pluralize }}
+            </span>
 
             <!-- Edit/Delete buttons for comment -->
             {% if user == comment.author %}
-            <a href="{% url 'comment_edit' post.slug comment.id %}" class="btn"
-                >Edit</a
-            >
-            
-            <form
-                method="post"
-                action="{% url 'comment_delete' post.slug comment.id %}"
-                style="display: inline"
-            >
+            <a href="{% url 'comment_edit' post.slug comment.id %}" class="btn">Edit</a>
+            <form method="post" action="{% url 'comment_delete' post.slug comment.id %}" style="display: inline">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">Delete</button>
             </form>
