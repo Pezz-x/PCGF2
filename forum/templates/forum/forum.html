@@ -1,102 +1,111 @@
 {% extends "base.html" %} {% block content %}
 {% load static %}
 
-<h1>Forum</h1>
-
 <!-- Create Post Section -->
-<div class="card mb-4">
-    <div class="card-body">
-        <h2 class="card-title">Create a Post</h2>
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {% load crispy_forms_tags %}
-            {{ form|crispy }}
-            <button type="submit" class="btn btn-primary">Post</button>
-        </form>
+<section id="forum_page">
+    <div id="create_post">
+        <div class="card-body">
+            <h2>Create a Post</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% load crispy_forms_tags %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-primary">Post</button>
+            </form>
+        </div>
     </div>
-</div>
 
-</div>
-    {% if not user.is_authenticated %}
-    <script>
-        window.location.href = "{% url 'account_login' %}";
-    </script>
-    {% else %}
-        {% if posts %}
-            {% for post in posts %}
-                <article style="margin-bottom:2em; border:1px solid #ccc; padding:1em;">
-                    <!-- Header: author info -->
-                    <div class="post-header">
-                        <div style="display:flex; align-items:center; gap:0.5em;">
-                            <div>
-                                <img
-                                    src="{% if post.author.profile_photo %}{{ post.author.profile_photo.url }}{% else %}{% static 'images/PCGF2_default_profile.png' %}{% endif %}"
-                                    alt="Profile photo"
-                                    width="50"
-                                    height="50"
-                                />
-                            </div>
-                            <div>
-                                <strong>
-                                    {{ post.author }}
-                                    {% if not user %}
-                                        User with no name
-                                    {% endif %}
-                                </strong>
-                                <div>
-                                    {% if post.author.relation_to_pcgf2 %}
-                                        Relation: {{ post.author.get_relation_to_pcgf2_display }}
-                                    {% else %}
-                                        Relation: No relation to PCGF2 provided.
-                                    {% endif %}
-                                </div>
-                                <div>
-                                    <small>{{ post.time_created|date:"F j, Y, g:i a" }}</small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- edit/delete if owner -->
-                        {% if user.is_authenticated and post.author == user %}
-                            <div style="margin-top:0.5em;">
-                                <a href="{% url 'post_edit' post.slug %}">Edit</a> |
-                                <a href="{% url 'post_delete' post.slug %}">Delete</a>
-                            </div>
-                        {% endif %}
-                    </div>
-
-                    <!-- Body: image + preview text -->
-                    <div class="post-body" style="margin-top:1em;">
-                        <div>
-                            <h3>
-                                <a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a>
-                            </h3>
-                        </div>
-                        <!-- Load image -->
-                        {% if post.images %}
-                            <div class="post-images">
-                                <a href="{% url 'post_detail' post.slug %}">
-                                    <img src="{{ post.images.url }}" alt="{{ post.title }} images" width="400" />
-                                </a>
-                            </div>
-                        {% endif %}
-                        <div class="post-text">
-                            <p>
-                                {{ post.body|truncatechars:200 }}
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Footer: likes/comments -->
-                    <div class="post-footer" style="margin-top:0.5em;">
-                        <span>❤️ {{ post.likes_count }}</span>
-                        <span style="margin-left:1em;">💬 {{ post.comments_count }}</span>
-                    </div>
-                </article>
-            {% endfor %}
+    </div>
+        {% if not user.is_authenticated %}
+        <script>
+            window.location.href = "{% url 'account_login' %}";
+        </script>
         {% else %}
-            <p>No posts to show.</p>
-        {% endif %}
-    {% endif %}
+            {% if posts %}
+                {% for post in posts %}
+                    <article style="margin-bottom:2em; border:1px solid #ccc; padding:1em;">
+                        <!-- Header: author info -->
+                        <div class="post-header">
+                            <div style="display:flex; align-items:center; gap:0.5em;">
+                                <div>
+                                    <!-- User profile picture -->
+                                    <img
+                                        src="{% if post.author.profile_photo %}{{ post.author.profile_photo.url }}{% else %}{% static 'images/PCGF2_default_profile.png' %}{% endif %}"
+                                        alt="Profile photo"
+                                        width="50"
+                                        height="50"
+                                    />
+                                </div>
+                                <div id="post_user_info">
+                                    <!-- User info -->
+                                    <strong id="post_user_name">
+                                        {{ post.author }}
+                                        {% if not user %}
+                                            User with no name
+                                        {% endif %}
+                                    </strong>
+                                    <div>
+                                        <small>
+                                            {% if post.author.relation_to_pcgf2 %}
+                                                Relation: {{ post.author.get_relation_to_pcgf2_display }}
+                                            {% else %}
+                                                Relation: No relation to PCGF2 provided.
+                                            {% endif %}
+                                        </small>
+                                    </div>
+                                    <div>
+                                        <small>{{ post.time_created|date:"F j, Y, g:i a" }}</small>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <!-- edit/delete if owner -->
+                            <div id="post_management">
+                                {% if user.is_authenticated and post.author == user %}
+                                    <div style="margin-top:0.5em;">
+                                        <a href="{% url 'post_edit' post.slug %}">Edit</a> |
+                                        <a href="{% url 'post_delete' post.slug %}">Delete</a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- Body: image + preview text -->
+                        <div class="post-body" style="margin-top:1em;">
+                            <div>
+                                <h3>
+                                    <a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a>
+                                </h3>
+                            </div>
+
+                            <!-- Post text body -->
+                            <div class="post-text">
+                                <p>
+                                    {{ post.body|truncatechars:200 }}
+                                </p>
+                            </div>
+
+                            <!-- Load image -->
+                            {% if post.images %}
+                                <div class="post-images">
+                                    <a href="{% url 'post_detail' post.slug %}">
+                                        <img src="{{ post.images.url }}" alt="{{ post.title }} images" width="400" />
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Footer: likes/comments -->
+                        <div class="post-footer" style="margin-top:0.5em;">
+                            <span>❤️ {{ post.likes_count }}</span>
+                            <span style="margin-left:1em;">💬 {{ post.comments_count }}</span>
+                        </div>
+                    </article>
+                {% endfor %}
+            {% else %}
+                <p>No posts to show.</p>
+            {% endif %}
+        {% endif %}
+    <div/>
+</section>
 {% endblock %}

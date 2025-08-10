@@ -313,47 +313,22 @@ footer {
 #about_page li{
   list-style-type: square;
   color: var(--primary-color);
-}
-
-#quote_box {
-  background-color: #e8e8e8dc;
-  border: #292c2e;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 25px;
-  color: black;
-  padding: 2rem;
-  margin: 2rem;
-  
-}
-#quote_image {
-  display: flex;
-  justify-content: center;
-  border-radius: 4px;
-  width: 100%;
-  height: auto;
-  padding: 5px;
+  font-family: var(--para-font);
 }
 
 /* Forum Page */
+#forum_page {
+  margin: 2rem;
+  font-family: var(--para-font);
+}
 
+#create_post {
+  margin-bottom: 1rem;
+}
 
 /* Post detail Page */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  justify-content: center;
-  align-items: center;
-}
-.modal-content {
-  background: white;
-  padding: 1em;
-  border-radius: 8px;
-  text-align: center;
-}
+
+
 
 /* Responsive media queries */
 
