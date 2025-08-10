@@ -119,24 +119,30 @@ def comment_like_toggle(request, comment_id):
 @login_required
 def comment_edit(request, slug, comment_id):
     comment = get_object_or_404(Comment, id=comment_id, post__slug=slug)
+    post = comment.post  # Get related post
 
     if request.user != comment.author and not request.user.is_superuser:
         return HttpResponseForbidden()
 
     if request.method == 'POST':
-        form = CommentForm(request.POST, instance=comment)
+        form = CommentForm(request.POST, request.FILES, instance=comment)
         if form.is_valid():
             form.save()
             return redirect('post_detail', slug=slug)
     else:
         form = CommentForm(instance=comment)
 
-    return render(request, 'forum/comment_edit.html', {'form': form, 'comment': comment})
+    return render(request, 'forum/comment_edit.html', {
+        'form': form,
+        'comment': comment,
+        'post': post
+    })
 
 # COMMENT DELETE PAGE
 @login_required
 def comment_delete(request, slug, comment_id):
     comment = get_object_or_404(Comment, id=comment_id, post__slug=slug)
+    post = comment.post
 
     if request.user != comment.author and not request.user.is_superuser:
         return HttpResponseForbidden()
@@ -145,6 +151,9 @@ def comment_delete(request, slug, comment_id):
         comment.delete()
         return redirect('post_detail', slug=slug)
 
-    return render(request, 'forum/comment_confirm_delete.html', {'comment': comment})
+    return render(request, 'forum/comment_confirm_delete.html', {
+        'comment': comment,
+        'post': post
+    })
 
 

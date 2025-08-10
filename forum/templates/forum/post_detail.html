@@ -82,10 +82,7 @@
             <!-- Edit/Delete buttons for comment -->
             {% if user == comment.author %}
             <a href="{% url 'comment_edit' post.slug comment.id %}" class="btn">Edit</a>
-            <form method="post" action="{% url 'comment_delete' post.slug comment.id %}" style="display: inline">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
+            <a href="{% url 'comment_delete' post.slug comment.id %}" class="btn btn-danger">Delete</a>
             {% endif %}
         </div>
     </div>
