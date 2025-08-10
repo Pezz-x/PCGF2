@@ -330,8 +330,8 @@ footer {
   display: flex;
   justify-content: center;
   border-radius: 4px;
-  width: auto;
-  height: 100%;
+  width: 100%;
+  height: auto;
   padding: 5px;
 }
 
