@@ -208,6 +208,16 @@ footer {
   border-radius: 0.5rem;
 }
 
+#home-button {
+  background-color: var(--primary-color);
+  font-family: var(--para-font);
+  color: var(--base-variant);
+  padding: 12px 28px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
 /* About Section */
 .about_section {
   height: 40vh;
@@ -320,7 +330,8 @@ footer {
   display: flex;
   justify-content: center;
   border-radius: 4px;
-  width: 100px;
+  width: auto;
+  height: 100%;
   padding: 5px;
 }
 
