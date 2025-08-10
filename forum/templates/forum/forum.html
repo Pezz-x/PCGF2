@@ -10,23 +10,27 @@
                 {% csrf_token %}
                 {% load crispy_forms_tags %}
                 {{ form|crispy }}
-                <button type="submit" class="btn btn-primary">Post</button>
+                <hr />
+                <button id="publish_btn">Post</button>
             </form>
         </div>
     </div>
 
     </div>
+        <!-- check if user is logged in-->
         {% if not user.is_authenticated %}
         <script>
             window.location.href = "{% url 'account_login' %}";
         </script>
         {% else %}
+            <!-- load posts -->
             {% if posts %}
                 {% for post in posts %}
-                    <article style="margin-bottom:2em; border:1px solid #ccc; padding:1em;">
+
+                    <article id="forum_post">
                         <!-- Header: author info -->
-                        <div class="post-header">
-                            <div style="display:flex; align-items:center; gap:0.5em;">
+                        <div id="post-header">
+                            <div id="author_header">
                                 <div>
                                     <!-- User profile picture -->
                                     <img
@@ -71,7 +75,7 @@
                         </div>
 
                         <!-- Body: image + preview text -->
-                        <div class="post-body" style="margin-top:1em;">
+                        <div id="post_body">
                             <div>
                                 <h3>
                                     <a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a>
@@ -101,6 +105,7 @@
                             <span style="margin-left:1em;">💬 {{ post.comments_count }}</span>
                         </div>
                     </article>
+
                 {% endfor %}
             {% else %}
                 <p>No posts to show.</p>
