@@ -74,12 +74,12 @@
     </section>
 
     <!-- Likes -->
-    <div id="like-section">
+    <div id="like_button">
         <form method="post" action="{% url 'post_like_toggle' post.slug %}">
             {% csrf_token %} {% if post.liked_by_user %}
-            <button><span>❤️ likes ({{ post.like_count }})</span></button>
+            <button id="like_button"><span>❤️ likes ({{ post.like_count }})</span></button>
             {% else %}
-            <button><span>🤍 likes ({{ post.like_count }})</span></button>
+            <button id="like_button"><span>🤍 likes ({{ post.like_count }})</span></button>
             {% endif %}
         </form>
     </div>
@@ -170,12 +170,12 @@
 
                 <div>
                     <!-- Comment likes -->
-                    <div id="like-section">
+                    <div>
                         <form method="post" action="{% url 'post_like_toggle' post.slug %}">
                             {% csrf_token %} {% if post.liked_by_user %}
-                            <button type="submit" class="btn btn-unlike">❤️ likes ({{ post.like_count }})</button>
+                            <button id="like_button">❤️ likes ({{ post.like_count }})</button>
                             {% else %}
-                            <button type="submit" class="btn btn-like">🤍 likes ({{ post.like_count }})</button>
+                            <button id="like_button">🤍 likes ({{ post.like_count }})</button>
                             {% endif %}
                         </form>
                     </div>
