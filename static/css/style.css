@@ -387,7 +387,40 @@ footer {
 }
 
 /* Post detail Page */
+/* Most style is inherited from forum post styles above */
 
+#post_detail_page {
+  margin: 2rem;
+}
+
+#comment_box {
+  background-color: var(--base-variant);
+  font-family: var(--para-font);
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 1em;
+}
+
+#add_comment {
+  font-family: var(--para-font);
+}
+
+#add_comment h2 {
+  font-family: var(--title-font);
+  color: var(--primary-color);
+}
+
+#add_comment_btn {
+  background-color: var(--primary-color);
+  font-family: var(--para-font);
+  color: var(--base-variant);
+  padding: 8px 20px;
+  text-align: center;
+  font-size: 14px;
+  border: 1px solid #1c1c1c;
+  border-radius: 4px;
+}
 
 /* Edit Pages */
 #edit-del_page {
@@ -414,6 +447,8 @@ footer {
   border: 1px solid #1c1c1c;
   border-radius: 4px;
 }
+
+
 
 /* Responsive media queries */
 
