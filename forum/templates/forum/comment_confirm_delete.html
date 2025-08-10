@@ -1,12 +1,28 @@
 {% extends "base.html" %} {% block content %}
 {% load static %}
 
+<section id="edit-del_page">
 <h2>Delete Comment</h2>
-<p>Are you sure you want to delete this comment?</p>
-<p><em>{{ comment.body }}</em></p>
-<form method="post">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Yes, delete</button>
-    <a href="{% url 'post_detail' post.slug %}" class="btn btn-secondary">Cancel</a>
-</form>
+<p>Are you sure you want to delete this comment? :</p>
+    <div>
+        <p><em>" {{ comment.body }} "</em></p>
+        <!-- Load comment image -->
+        {% if comment.images %}
+            <div class="comment-images">
+                <a href="{% url 'post_detail' post.slug %}">
+                    <img src="{{ comment.images.url }}" alt="{{ comment.title }} image" width="400" />
+                </a>
+            </div>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <hr />
+            <div id="edit-del_page_btns">
+                <button id="edit-del_page_btn">Yes, delete</button>
+                <button id="edit-del_page_btn" onclick="window.location.href{% url 'post_detail' post.slug %}">Cancel</button>
+            </div>
+        </form>
+    </div>
+</section>
+
 {% endblock %}
