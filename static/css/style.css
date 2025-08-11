@@ -8,7 +8,7 @@
     --base-color: #f0efef;      
     --base-variant: #FFFFFF;    
     --text-color: #1c1c1c;       
-    --primary-color: #F2A341;    
+    --primary-color: #f0890c;    
     --accent-color: #1763A6;     
 }
 
@@ -17,7 +17,7 @@
     --base-variant: #292c2e;
     --text-color: #FFFFFF;
     --primary-color: #F2A341;     
-    --accent-color: #4E94BF;      
+    --accent-color: #6fb5e0;      
 }
 
 
@@ -224,7 +224,7 @@ footer {
 /* About Section */
 .about_section {
   height: 40vh;
-  background-image: url('../images/Trunpenny.jpg');
+  background-image: url('../images/Trunpenny.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -249,7 +249,7 @@ footer {
 /* Fourm Section */
 .forum_section {
   height: 40vh;
-  background-image: url('../images/Fourm_stock.jpg');
+  background-image: url('../images/Fourm_stock.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -274,7 +274,7 @@ footer {
 /* FB Group Section */
 .fbgroup_section {
   height: 40vh;
-  background-image: url('../images/FB_group_screenshot.png');
+  background-image: url('../images/FB_group_screenshot.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -469,7 +469,9 @@ footer {
   border-radius: 5px;
 }
 
-
+#home_page_text {
+  color: white;
+}
 
 /* Responsive media queries */
 
