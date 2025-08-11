@@ -28,7 +28,7 @@ def post_detail(request, slug):
     comments = post.comments.all()  # related_name in Comment model
 
     if request.method == 'POST':
-        form = CommentForm(request.POST)
+        form = CommentForm(request.POST, request.FILES)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.post = post
@@ -37,6 +37,12 @@ def post_detail(request, slug):
             return redirect('post_detail', slug=post.slug)  # Redirect after POST
     else:
         form = CommentForm()
+
+    # annotate whether the current user liked the post/comment
+    post.liked_by_user = request.user in post.liked_by.all() if request.user.is_authenticated else False
+    for c in comments:
+        c.liked_by_user = request.user in c.liked_by.all() if request.user.is_authenticated else False
+
 
     return render(request, 'forum/post_detail.html', {
         'post': post,

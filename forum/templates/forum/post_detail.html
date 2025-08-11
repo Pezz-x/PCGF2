@@ -76,10 +76,11 @@
     <!-- Likes -->
     <div id="like_button">
         <form method="post" action="{% url 'post_like_toggle' post.slug %}">
-            {% csrf_token %} {% if post.liked_by_user %}
-            <button id="like_button"><span>❤️ likes ({{ post.like_count }})</span></button>
+            {% csrf_token %} 
+            {% if post.liked_by_user %}
+            <button id="like_button"><span>❤️ likes ({{ post.likes_count }})</span></button>
             {% else %}
-            <button id="like_button"><span>🤍 likes ({{ post.like_count }})</span></button>
+            <button id="like_button"><span>🤍 likes ({{ post.likes_count }})</span></button>
             {% endif %}
         </form>
     </div>
@@ -91,7 +92,7 @@
     <h2>Join the conversation</h2>
         {% if user.is_authenticated %}
         <div>
-            <form method="post" action="{% url 'post_detail' post.slug %}">
+            <form method="post" action="{% url 'post_detail' post.slug %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <div>
@@ -116,17 +117,12 @@
                     <div id="author_header">
                         <div>
                             <!-- User profile picture -->
-                            <img
-                                src="{% if post.author.profile_photo %}{{ post.author.profile_photo.url }}{% else %}{% static 'images/PCGF2_default_profile.png' %}{% endif %}"
-                                alt="Profile photo"
-                                width="50"
-                                height="50"
-                            />
+                            <img src="{% if comment.author.profile_photo %}{{ comment.author.profile_photo.url }}{% else %}{% static 'images/PCGF2_default_profile.png' %}{% endif %}" alt="Profile photo" width="50" height="50"/>
                         </div>
                         <div id="post_user_info">
-                            <!-- User info -->
+                            <!-- User name -->
                             <strong id="post_user_name">
-                                {{ post.author }}
+                                {{ comment.author }}
                                 {% if not user %}
                                     User with no name
                                 {% endif %}
@@ -141,7 +137,7 @@
                                 </small>
                             </div>
                             <div>
-                                <small>{{ post.time_created|date:"F j, Y, g:i a" }}</small>
+                                <small>{{ comment.created_on|date:"F j, Y, g:i a" }}</small>
                             </div>
                         </div>
                     </div>
@@ -149,9 +145,8 @@
                     <!-- edit/delete if owner -->
                     <div id="post_management">
                         {% if user.is_authenticated and post.author == user %}
-                            <div style="margin-top:0.5em;">
-                                <a href="{% url 'post_edit' post.slug %}">Edit</a> |
-                                <a href="{% url 'post_delete' post.slug %}">Delete</a>
+                                <a href="{% url 'comment_edit' post.slug comment.id %}">Edit</a> |
+                                <a href="{% url 'comment_delete' post.slug comment.id %}">Delete</a>
                             </div>
                         {% endif %}
                     </div>
@@ -162,7 +157,7 @@
                 {% if comment.images %}
                     <div class="comment-images">
                         <a>
-                            <img src="{{ comment.images.url }}" alt="{{ comment.title }} image" width="400" />
+                            <img src="{{ comment.images.url }}" alt="Comment image by {{ comment.author }}" width="400" />
                         </a>
                     </div>
                 {% endif %}
@@ -171,11 +166,12 @@
                 <div>
                     <!-- Comment likes -->
                     <div>
-                        <form method="post" action="{% url 'post_like_toggle' post.slug %}">
-                            {% csrf_token %} {% if post.liked_by_user %}
-                            <button id="like_button">❤️ likes ({{ post.like_count }})</button>
+                        <form method="post" action="{% url 'comment_like_toggle' comment.id %}">
+                            {% csrf_token %}
+                            {% if comment.liked_by_user %}
+                            <button id="like_button">❤️ likes ({{ comment.likes_count }})</button>
                             {% else %}
-                            <button id="like_button">🤍 likes ({{ post.like_count }})</button>
+                            <button id="like_button">🤍 likes ({{ comment.likes_count }})</button>
                             {% endif %}
                         </form>
                     </div>
