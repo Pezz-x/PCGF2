@@ -8,6 +8,7 @@ from .models import Post, Comment
 # Create your views here.
 
 # FOURM PAGE
+@login_required
 def forum_view(request):
     posts = Post.objects.all()
     if request.method == 'POST':
