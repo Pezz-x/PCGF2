@@ -224,7 +224,7 @@ footer {
 /* About Section */
 .about_section {
   height: 40vh;
-  background-image: url('../images/Trunpenny.jpg');
+  background-image: url('../images/Trunpenny.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -249,7 +249,7 @@ footer {
 /* Fourm Section */
 .forum_section {
   height: 40vh;
-  background-image: url('../images/Fourm_stock.jpg');
+  background-image: url('../images/Fourm_stock.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -274,7 +274,7 @@ footer {
 /* FB Group Section */
 .fbgroup_section {
   height: 40vh;
-  background-image: url('../images/FB_group_screenshot.png');
+  background-image: url('../images/FB_group_screenshot.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
