@@ -28,7 +28,7 @@ def post_detail(request, slug):
     comments = post.comments.all()  # related_name in Comment model
 
     if request.method == 'POST':
-        form = CommentForm(request.POST)
+        form = CommentForm(request.POST, request.FILES)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.post = post

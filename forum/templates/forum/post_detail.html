@@ -91,7 +91,7 @@
     <h2>Join the conversation</h2>
         {% if user.is_authenticated %}
         <div>
-            <form method="post" action="{% url 'post_detail' post.slug %}">
+            <form method="post" action="{% url 'post_detail' post.slug %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <div>
