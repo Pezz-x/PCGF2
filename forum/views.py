@@ -38,6 +38,12 @@ def post_detail(request, slug):
     else:
         form = CommentForm()
 
+    # annotate whether the current user liked the post/comment
+    post.liked_by_user = request.user in post.liked_by.all() if request.user.is_authenticated else False
+    for c in comments:
+        c.liked_by_user = request.user in c.liked_by.all() if request.user.is_authenticated else False
+
+
     return render(request, 'forum/post_detail.html', {
         'post': post,
         'comments': comments,
