@@ -449,7 +449,17 @@ footer {
   border-radius: 4px;
 }
 
-#like_button {
+#post_like_button {
+  background-color: var(--base-variant);
+  font-family: var(--para-font);
+  color: var(--text-color);
+  padding: 3px 5px;
+  font-size: 14px;
+  border: 1px solid #1c1c1c;
+  border-radius: 5px;
+}
+
+#comment_like_button {
   background-color: var(--base-color);
   font-family: var(--para-font);
   color: var(--text-color);
@@ -458,6 +468,7 @@ footer {
   border: 1px solid #1c1c1c;
   border-radius: 5px;
 }
+
 
 
 /* Responsive media queries */
