@@ -118,6 +118,8 @@
                         <div>
                             <!-- User profile picture -->
                             <img src="{% if comment.author.profile_photo %}{{ comment.author.profile_photo.url }}{% else %}{% static 'images/PCGF2_default_profile.png' %}{% endif %}" alt="Profile photo" width="50" height="50"/>
+                        </div>
+                        <div id="post_user_info">
                             <!-- User name -->
                             <strong id="post_user_name">
                                 {{ comment.author }}

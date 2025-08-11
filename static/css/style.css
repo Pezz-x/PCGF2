@@ -454,7 +454,6 @@ footer {
   font-family: var(--para-font);
   color: var(--text-color);
   padding: 3px 5px;
-  text-align: center;
   font-size: 14px;
   border: 1px solid #1c1c1c;
   border-radius: 5px;
