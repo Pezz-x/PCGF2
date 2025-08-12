@@ -26,7 +26,7 @@ class ForumTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'forum/forum.html')
 
-    #test 2 if logged in user can create posts
+    # test 2 if logged in user can create posts
     def test_authenticated_user_can_create_post(self):
         self.client.login(username='user1', password='pass123')
         response = self.client.post(reverse('forum'), {
